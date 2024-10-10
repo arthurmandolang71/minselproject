@@ -25,6 +25,7 @@ class OperatorController extends Controller
             'operator' => $operator,
         ]);
     }
+    // 
 
 
     public function create(Request $request)
