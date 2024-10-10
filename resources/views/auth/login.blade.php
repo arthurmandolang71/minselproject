@@ -11,7 +11,7 @@
     <meta name="description" content="Tim Kemeanganan" />
     <meta property="og:title" content="Tim Kemeanganan" />
     <meta property="og:description" content="Tim Kemeanganan" />
-    <meta property="og:image" content="{{ asset('') }}assets/images/logosementara.png" />
+    <meta property="og:image" content="{{ asset('') }}assets/images/logoloading.png" />
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
