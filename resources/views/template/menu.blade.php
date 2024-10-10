@@ -106,7 +106,7 @@
                     </a>
                     <ul aria-expanded="false">
                         <li><a href="/dataprovider">Daftar Pemberi Data</a></li>
-                        <li><a href='/tim'>Tim Kemenangan</a></li>
+                        <li><a href='/tim'>Tim Pemenangan</a></li>
                     </ul>
                 </li>
                 <li>
