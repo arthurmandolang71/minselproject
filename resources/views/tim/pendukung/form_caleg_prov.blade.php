@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <div class="row page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="/pendukungcaleg/">Pendukung</a></li>
+                    <li class="breadcrumb-item active"><a href="#">Pendukung</a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Input Pendukung</a></li>
                 </ol>
             </div>
@@ -40,7 +40,7 @@
                         <div class="card-body">
 
                             <div class="basic-form">
-                                <form action="/pendukungtim/" class="form-valide-with-icon needs-validation" method="post"
+                                <form action="/pendukung_tim/" class="form-valide-with-icon needs-validation" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
 
@@ -66,7 +66,10 @@
                                     @php
                                         $id_user = session()->get('caleg_id');
                                         $ambil_id_pendukung = request()->segment(3);
-                                        $ambil_pendukung = App\Models\CalegPendukung::where('dpt', $ambil_id_pendukung)->first();
+                                        $ambil_pendukung = App\Models\CalegPendukung::where(
+                                            'dpt',
+                                            $ambil_id_pendukung,
+                                        )->first();
                                         if (isset($ambil_pendukung)) {
                                             $pendukung_ada = true;
                                         } else {
@@ -130,7 +133,7 @@
 
                                                 <div class="row">
 
-                                                    <div class="mb-4 col-md-4">
+                                                    <div class="mb-12 col-md-12">
                                                         <label class="text-label form-label"
                                                             for="validationCustomUsername">Nomor Kartu
                                                             Tanda Penduduk (KTP)</label>
@@ -152,7 +155,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="mb-4 col-md-4">
+                                                    {{-- <div class="mb-4 col-md-4">
                                                         <label class="text-label form-label"
                                                             for="validationCustomUsername">KK/KTP dari Kepala
                                                             Keluarga</label>
@@ -172,9 +175,9 @@
                                                                 </div>
                                                             @enderror
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
-                                                    <div class="mb-4 col-md-4">
+                                                    {{-- <div class="mb-4 col-md-4">
                                                         <label class="text-label form-label"
                                                             for="validationCustomUsername">Status
                                                             Keluarga</label>
@@ -200,7 +203,7 @@
                                                                 </div>
                                                             @enderror
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
 
@@ -372,9 +375,33 @@
                                                     <h4 class="card-title">Klasifikasi Pemilih</h4>
                                                 </div>
 
-                                                <div class="row ">
-
-                                                    <div class="mb-6 col-md-6">
+                                                <div class="row " style="background-color: rgb(231, 221, 208)">
+                                                    <div class="mb-4 col-md-4">
+                                                        <label class="text-label form-label"
+                                                            for="validationCustomUsername">Pemberi Data</label>
+                                                        <div class="basic-form">
+                                                            <select name="referensi_id" id="single-selecteff"
+                                                                class="single-select-placeholder js-states @error('referensi_id') is-invalid @enderror">
+                                                                <option value="">Pilih</option>
+                                                                @foreach ($referensi as $item)
+                                                                    @if (old('referensi_id', $dpt->pendukung_caleg_prov->referensi_id ?? null) == $item->id)
+                                                                        <option value="{{ $item->id }}" selected>
+                                                                            {{ $item->nama }}</option>
+                                                                    @else
+                                                                        <option value="{{ $item->id }}">
+                                                                            {{ $item->nama }}
+                                                                        </option>
+                                                                    @endif
+                                                                @endforeach
+                                                            </select>
+                                                            @error('referensi_id')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-4 col-md-4">
                                                         <label class="text-label form-label"
                                                             for="validationCustomUsername">Klasifikasi Pendukung</label>
                                                         <div class="basic-form">
@@ -401,7 +428,8 @@
                                                     </div>
                                                     <div class="mb-4 col-md-4">
                                                         <label class="text-label form-label"
-                                                            for="validationCustomUsername">Bantuan</label>
+                                                            for="validationCustomUsername">Telah
+                                                            Tersentu Bantuan</label>
                                                         <div class="basic-form">
                                                             <select name="klasifikasi_bantuan_id" id="single-select"
                                                                 class="single-select-placeholder js-states @error('klasifikasi_bantuan_id') is-invalid @enderror">
@@ -600,7 +628,7 @@
 
                                         </div>
 
-                                        <div class="mb-12 col-md-12">
+                                        {{-- <div class="mb-12 col-md-12">
                                             <label class="text-label form-label" for="validationCustomUsername">Foto
                                                 (ktp/dll)
                                             </label>
@@ -621,7 +649,7 @@
                                                         class="img-preview1 img-fluid">
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="mb-3 col-md-6">
                                             <div class="form-check">

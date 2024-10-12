@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
-    <title>Tim Kemenanganan</title>
+    <title>Tim Pemenangnan</title>
 
     @yield('header')
 

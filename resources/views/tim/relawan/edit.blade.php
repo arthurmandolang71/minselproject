@@ -46,7 +46,7 @@
                             @endif
 
                             <div class="basic-form">
-                                <form action="/dataprovider/{{ $relawan->id }}"
+                                <form action="/dataprovidertim/{{ $relawan->id }}"
                                     class="form-valide-with-icon needs-validation" method="post"
                                     enctype="multipart/form-data">
                                     @method('PUT')
@@ -232,7 +232,7 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn me-2 btn-primary">Simpan</button>
-                                    <a href="/operator" class="btn btn-light">Batal</a>
+                                    <a href="/dataprovidertim" class="btn btn-light">Batal</a>
                                 </form>
                             </div>
 

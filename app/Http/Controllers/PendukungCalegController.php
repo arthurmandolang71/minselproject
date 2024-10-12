@@ -626,8 +626,7 @@ class PendukungCalegController extends Controller
         $pendukung_caleg['dpt'] = $pendukung['dpt'];
         // $pendukung_caleg['kk'] = $request->kk;
         $pendukung_caleg['status_keluarga'] = $request->status_keluarga;
-        $pendukung_caleg['input_id'] = $request->session()->get('user_id');
-        $pendukung_caleg['jml_referensi'] = 1;
+
 
         $caleg_id = $request->session()->get('caleg_id');
         $pendukung_caleg['celeg_id'] = $caleg_id;
@@ -640,6 +639,8 @@ class PendukungCalegController extends Controller
             CalegPendukungProv::where('id', $cek_sudah_input->id)->update($pendukung_caleg);
         } else {
             // dd($pendukung_caleg);
+            $pendukung_caleg['input_id'] = $request->session()->get('user_id');
+            $pendukung_caleg['jml_referensi'] = 1;
             CalegPendukungProv::create($pendukung_caleg);
         }
 

@@ -16,8 +16,8 @@
         <div class="container-fluid">
             <div class="row page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="/dataprovider">Relawan</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Tambah Relawan</a></li>
+                    <li class="breadcrumb-item active"><a href="/dataprovider">Data Provider</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Tambah Orang</a></li>
                 </ol>
             </div>
             <!-- row -->
@@ -28,7 +28,7 @@
                         <!--********************************** content start ***********************************-->
                         <div class="row container">
                             <div class="col-12">
-                                <a href="/dataprovider" class="btn btn-block btn-primary"><span
+                                <a href="/kta" class="btn btn-block btn-primary"><span
                                         class="btn-icon-start text-primary"><i class="bi bi-backspace-fill"></i>
                                     </span>Kembali</a>
                             </div>
@@ -46,10 +46,8 @@
                             @endif
 
                             <div class="basic-form">
-                                <form action="/dataprovider/{{ $relawan->id }}"
-                                    class="form-valide-with-icon needs-validation" method="post"
-                                    enctype="multipart/form-data">
-                                    @method('PUT')
+                                <form action="/dataprovidertim" class="form-valide-with-icon needs-validation"
+                                    method="post" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="mb-3 col-md-12">
@@ -60,7 +58,7 @@
                                                 class="single-select-placeholder js-states @error('tim_id') is-invalid @enderror">
                                                 <option value="">Pilih</option>
                                                 @foreach ($tim as $item)
-                                                    @if (old('tim_id', $relawan->tim_id) == $item->id)
+                                                    @if (old('tim_id') == $item->id)
                                                         <option value="{{ $item->id }}" selected>
                                                             {{ $item->nama }}</option>
                                                     @else
@@ -82,7 +80,7 @@
                                             Lengkap</label>
                                         <div class="input-group">
                                             <span class="input-group-text"> <i class="bi bi-card-heading"></i> </span>
-                                            <input name="nama" value="{{ old('nama', $relawan->nama) }}" type="text"
+                                            <input name="nama" value="{{ old('nama') }}" type="text"
                                                 class="form-control @error('nama') is-invalid @enderror"
                                                 id="validationCustomUsername" placeholder="Masukan Nama Lengkap relawan">
                                             @error('nama')
@@ -100,8 +98,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"> <i class="bi bi-whatsapp"></i>
                                                 </span>
-                                                <input name="no_wa" value="{{ old('no_wa', $relawan->no_wa) }}"
-                                                    type="text" class="form-control @error('no_wa') is-invalid @enderror"
+                                                <input name="no_wa" value="{{ old('no_wa') }}" type="text"
+                                                    class="form-control @error('no_wa') is-invalid @enderror"
                                                     id="validationCustomUsername" placeholder="Masukan No.Wa Aktif">
                                                 @error('no_wa')
                                                     <div class="invalid-feedback">
@@ -117,8 +115,7 @@
                                             for="validationCustomUsername">Keterangan</label>
                                         <div class="input-group">
                                             <span class="input-group-text"> <i class="bi bi-card-heading"></i> </span>
-                                            <input name="keterangan" value="{{ old('keterangan', $relawan->keterangan) }}"
-                                                type="text"
+                                            <input name="keterangan" value="{{ old('keterangan') }}" type="text"
                                                 class="form-control @error('keterangan') is-invalid @enderror"
                                                 id="validationCustomUsername"
                                                 placeholder="Masukan keterangan mengenai relawan ini">
@@ -137,10 +134,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"> <i class="bi bi-instagram"></i>
                                                 </span>
-                                                <input name="username"
-                                                    value="{{ old('username', $relawan->user_ref->username) }}"
-                                                    type="text"
-                                                    class="form-control @error('facebook') is-invalid @enderror"
+                                                <input name="username" value="{{ old('username') }}" type="text"
+                                                    class="form-control @error('username') is-invalid @enderror"
                                                     id="validationCustomUsername">
                                                 @error('username')
                                                     <div class="invalid-feedback">
@@ -171,10 +166,9 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"> <i class="bi bi-instagram"></i>
                                                 </span>
-                                                <input name="target_pendukung"
-                                                    value="{{ old('target_pendukung', $relawan->target_pendukung) }}"
+                                                <input name="target_pendukung" value="{{ old('target_pendukung') }}"
                                                     type="text"
-                                                    class="form-control @error('facebook') is-invalid @enderror"
+                                                    class="form-control @error('target_pendukung') is-invalid @enderror"
                                                     id="validationCustomtarget_pendukung">
                                                 @error('target_pendukung')
                                                     <div class="invalid-feedback">
@@ -183,6 +177,7 @@
                                                 @enderror
                                             </div>
                                         </div>
+
                                     </div>
 
                                     <div class="row ">
@@ -202,23 +197,11 @@
                                                     </div>
                                                 @enderror
                                                 <div>
-                                                    <img src="{{ $relawan->nama }}" class="img-preview1 img-fluid">
+                                                    <img class="img-preview1 img-fluid">
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="mb-3 col-md-6">
-                                        <label class="text-label form-label" for="validationCustomUsername">Apakah
-                                            akan menonaktifkan orang ini ?</label>
-                                        <div class="form-check form-switch">
-                                            <input name="active" value="1" class="form-check-input"
-                                                type="checkbox" id="flexSwitchCheckChecked"
-                                                @if (old('active', $relawan->active)) checked @endif>
-                                            <label class="form-check-label" for="flexSwitchCheckChecked">jangan centang
-                                                jika
-                                                ingin mengnonaktifkan orang ini</label>
-                                        </div>
                                     </div>
 
 
@@ -232,7 +215,7 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn me-2 btn-primary">Simpan</button>
-                                    <a href="/operator" class="btn btn-light">Batal</a>
+                                    <a href="/dataprovider" class="btn btn-light">Batal</a>
                                 </form>
                             </div>
 

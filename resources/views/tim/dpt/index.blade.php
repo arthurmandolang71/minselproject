@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Penjaringan</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Collect Data</a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Cari DPT</a></li>
                 </ol>
             </div>
@@ -34,7 +34,7 @@
 
                             <!-- start content -->
                             <div class="container">
-                                <form action="/dpttim" method="get">
+                                <form action="/timdpt" method="get">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label class="form-label" for="multicol-country">Kabupaten / kota</label>
@@ -142,38 +142,19 @@
                                                 <td>{{ $item->tps }}</td>
                                                 </td>
                                                 <td>
-                                                    @if ($level_caleg == 1)
-                                                        @if ($item->pendukung->pendukung_caleg_ri)
-                                                            <span>sudah di input</span>
-                                                        @else
-                                                            <a href='/pendukungtim/create/{{ $item->id }}/{{ $status }}'
-                                                                type='button' class='btn btn-rounded btn-info'><span
-                                                                    class='btn-icon-start text-info'><i
-                                                                        class='fa fa-plus color-info'></i></span></a>
-                                                        @endif
+
+                                                    @if (isset($item->pendukung->pendukung_caleg_prov))
+                                                        <a href='/pendukung_referensi_tim/create/{{ $item->id }}/{{ $status }}'
+                                                            type='button' class='btn btn-rounded btn-info'><span
+                                                                class='btn-icon-start text-info'><i
+                                                                    class='fa fa-plus color-info'></i></span></a>
+                                                    @else
+                                                        <a href='/pendukung_tim/create/{{ $item->id }}/{{ $status }}'
+                                                            type='button' class='btn btn-rounded btn-info'><span
+                                                                class='btn-icon-start text-info'><i
+                                                                    class='fa fa-plus color-info'></i></span></a>
                                                     @endif
 
-                                                    @if ($level_caleg == 2)
-                                                        @if ($item->pendukung->pendukung_caleg_prov)
-                                                            <span>sudah di input</span>
-                                                        @else
-                                                            <a href='/pendukungtim/create/{{ $item->id }}/{{ $status }}'
-                                                                type='button' class='btn btn-rounded btn-info'><span
-                                                                    class='btn-icon-start text-info'><i
-                                                                        class='fa fa-plus color-info'></i></span></a>
-                                                        @endif
-                                                    @endif
-
-                                                    @if ($level_caleg == 3)
-                                                        @if ($item->pendukung->pendukung_caleg_kabkota ?? null)
-                                                            <span>sudah di input</span>
-                                                        @else
-                                                            <a href='/pendukungtim/create/{{ $item->id }}/{{ $status }}'
-                                                                type='button' class='btn btn-rounded btn-info'><span
-                                                                    class='btn-icon-start text-info'><i
-                                                                        class='fa fa-plus color-info'></i></span></a>
-                                                        @endif
-                                                    @endif
 
                                                 </td>
                                             </tr>

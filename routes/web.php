@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\DptCalegController;
 use App\Http\Controllers\OperatorController;
+use App\Http\Controllers\RelawantimController;
 use App\Http\Controllers\TargetCalegController;
 use App\Http\Controllers\PendukungTimController;
 use App\Http\Controllers\PendukungCalegController;
@@ -96,6 +97,9 @@ Route::controller(DptCalegController::class)->middleware('isCaleg')->group(funct
     Route::get('/collectdata', 'index');
     Route::get('/collectdata/dash', 'dashboard');
 
+    Route::get('/collectdata/create', 'create');
+    Route::post('/collectdata', 'store');
+
 
     Route::get('/get_kecamatan/dptcaleg/{id}', 'getKecamatan');
     Route::get('/get_kelurahandesa/dptcaleg/{id}', 'getKelurahanDesa');
@@ -152,25 +156,32 @@ Route::resource('/operator', OperatorController::class)->middleware('isCaleg')->
 
 // tim calon
 
-Route::controller(DashboardTim::class)->middleware('isTim')->group(function () {
-    Route::get('/timdash', 'index');
-});
+// Route::controller(DashboardTim::class)->middleware('isTim')->group(function () {
+//     Route::get('/timdash', 'index');
+// });
 
 
 Route::controller(DptTimController::class)->middleware('isTim')->group(function () {
-    Route::get('/dpttim', 'index');
+    Route::get('/timdpt', 'index');
 
-    Route::get('/get_kecamatan/dpttim/{id}', 'getKecamatan');
-    Route::get('/get_kelurahandesa/dpttim/{id}', 'getKelurahanDesa');
-    Route::get('/get_tps/dpttim/{id}', 'getTps');
+    Route::get('/get_kecamatan/timdpt/{id}', 'getKecamatan');
+    Route::get('/get_kelurahandesa/timdpt/{id}', 'getKelurahanDesa');
+    Route::get('/get_tps/timdpt/{id}', 'getTps');
 });
 
 Route::controller(PendukungTimController::class)->middleware('isTim')->group(function () {
-    Route::get('/pendukungtim/dash', 'dashboard');
-    Route::get('/pendukungtim/index', 'index');
+    Route::get('/pendukung_tim/create/{id_dpt}/{status}', 'create');
+    Route::post('/pendukung_tim', 'store');
 
-    Route::get('/pendukungtim/create/{id_dpt}/{status}', 'create');
-    Route::post('/pendukungtim', 'store');
+    Route::get('/pendukung_referensi_tim/create/{id_dpt}/{status}', 'create_referensi');
+    Route::post('/pendukung_referensi_tim', 'store_referensi');
 });
+
+Route::resource('/dataprovidertim', RelawantimController::class)->middleware('isTim')->except(['destroy'])->parameters([
+    'dataprovidertim' => 'dataprovidertim',
+]);
+
+
+
 
 // tim calon

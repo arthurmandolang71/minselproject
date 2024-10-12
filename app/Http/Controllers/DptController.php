@@ -52,6 +52,7 @@ class DptController extends Controller
         unset($data[0]);
 
         // $cek_errot = $data[0][3];
+        // dd($file);
 
         for ($i = 1; $i <= count($data); $i++) {
 

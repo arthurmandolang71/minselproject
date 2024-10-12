@@ -86,6 +86,7 @@
                     <ul aria-expanded="false">
                         <li><a href='/collectdata'>DPT</a></li>
                         <li><a href="/collectdata/dash?prov=71">Dashboard</a></li>
+                        <li><a href='/collectdata/create'>Input DPT (tambahan)</a></li>
                     </ul>
                 </li>
                 <li>
@@ -125,19 +126,19 @@
             @endcan
 
             @can('isTim')
-                <li>
+                {{-- <li>
                     <a class="bi bi-bar-chart" href="/timdash">
                         <span class="nav-text">Dashboard</span>
                     </a>
-                </li>
+                </li> --}}
                 <li>
-                    <a class="bi bi-people-fill" href="/dpttim">
-                        <span class="nav-text">Penjaringan</span>
+                    <a class="bi bi-save-fill" href="/timdpt">
+                        <span class="nav-text">Collect Data</span>
                     </a>
                 </li>
                 <li>
-                    <a class="bi bi-flag-fill" href="/pendukungtim/index">
-                        <span class="nav-text">Penyaringan</span>
+                    <a class="bi bi-people-fill" href="/dataprovidertim">
+                        <span class="nav-text">Pemberi Data</span>
                     </a>
                 </li>
             @endcan

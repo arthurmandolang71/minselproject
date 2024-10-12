@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CalegRi;
 use App\Models\CalegProv;
 use App\Models\CalegKabkota;
+use App\Models\CalegPendukungProv;
 use Illuminate\Http\Request;
 use App\Models\DapilProvWilayah;
 use Illuminate\Routing\Controller;
@@ -48,8 +49,6 @@ class LoginController extends Controller
             if (auth()->user()->level == 2) {
                 $level_caleg = auth()->user()->caleg_level;
 
-
-
                 $caleg = CalegProv::where('user_id', auth()->user()->id)->first();
                 // dd($caleg);
                 $dapil = DapilProvWilayah::where('dapil_prov_id', $caleg->dapil_prov)->first();
@@ -57,7 +56,6 @@ class LoginController extends Controller
                 $request->session()->put('dapil_id', $caleg->dapil_prov);
                 $request->session()->put('prov_dapil', 71);
                 $request->session()->put('kabkota_dapil', $dapil->kabkota);
-
 
                 $partai = Partai::where('id', $caleg->partai_id)->first();
                 // dd($partai);
@@ -72,12 +70,12 @@ class LoginController extends Controller
 
             if (auth()->user()->level == 3) {
                 $level_caleg = auth()->user()->caleg_level;
-                $user_id_caleg = TimReferensi::where('user_id', auth()->user()->id)->first()->user_id_caleg;
+                $user_id_caleg = CalegProv::first()->user_id_caleg;
 
 
 
                 if ($level_caleg == 2) {
-                    $caleg = CalegProv::where('user_id', $user_id_caleg)->first();
+                    $caleg = CalegProv::first();
 
                     $dapil = DapilProvWilayah::where('dapil_prov_id', $caleg->dapil_prov)->get();
                     $kabkota_dapil = [];
@@ -93,12 +91,12 @@ class LoginController extends Controller
                 // dd($caleg->partai_id);
                 $partai = Partai::where('id', $caleg->partai_id)->first();
 
-                $relawan = TimReferensi::where('user_id', auth()->user()->id)->first();
+                // $relawan = TimReferensi::where('user_id', auth()->user()->id)->first();
 
-                $request->session()->put('relawan_id', $relawan->id);
-                $request->session()->put('logo', $partai->logo);
-                $request->session()->put('logo_text', $partai->logo_text);
-                $request->session()->put('color', $partai->color);
+                $request->session()->put('relawan_id', auth()->user()->id);
+                // $request->session()->put('logo', $partai->logo);
+                // $request->session()->put('logo_text', $partai->logo_text);
+                // $request->session()->put('color', $partai->color);
 
                 $request->session()->put('level_caleg', $level_caleg);
                 $request->session()->put('caleg_id', $caleg->id);

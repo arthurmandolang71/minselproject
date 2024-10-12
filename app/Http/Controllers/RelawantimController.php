@@ -13,8 +13,9 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
-class RelawanController extends Controller
+class RelawantimController extends Controller
 {
+    //
     /**
      * Display a listing of the resource.
      */
@@ -25,8 +26,8 @@ class RelawanController extends Controller
 
         // dd($relawan);
 
-        return view('caleg.relawan.index', [
-            'title' => 'Relawan',
+        return view('tim.relawan.index', [
+            'title' => 'Pemberi Data',
             'relawan' => $relawan,
         ]);
     }
@@ -57,7 +58,7 @@ class RelawanController extends Controller
         $total_kk = $pengikut->distinct()->count('kk');
         // dd($total_kk);
 
-        return view('caleg.relawan.print', [
+        return view('tim.relawan.print', [
             'title' => 'Pengikut Relawan',
             'pengikut' => $pengikut->get(),
             'relawan' => $relawan,
@@ -68,10 +69,10 @@ class RelawanController extends Controller
     public function create(Request $request)
     {
         $user_id = $request->session()->get('user_id');
-        $tim = Tim::where('user_id', $user_id)->get();
+        $tim = Tim::get();
 
-        return view('caleg.relawan.create', [
-            'title' => 'Tambah Relawan',
+        return view('tim.relawan.create', [
+            'title' => 'Tambah Pemberi Data',
             'tim' => $tim
         ]);
     }
@@ -84,9 +85,9 @@ class RelawanController extends Controller
         $relawan = TimReferensi::where('id', $id)->with(['user_ref'])->first();
 
         $user_id = $request->session()->get('user_id');
-        $tim = Tim::where('user_id', $user_id)->get();
+        $tim = Tim::get();
 
-        return view('caleg.relawan.edit', [
+        return view('tim.relawan.edit', [
             'title' => 'Ubah Data Relawan',
             'relawan' => $relawan,
             'tim' =>  $tim
@@ -156,7 +157,7 @@ class RelawanController extends Controller
 
         TimReferensi::create($validateData);
 
-        return redirect('/dataprovider')->with('pesan', 'data barhasil di tambah');
+        return redirect('/dataprovidertim')->with('pesan', 'data barhasil di tambah');
     }
 
     /**
@@ -227,6 +228,6 @@ class RelawanController extends Controller
 
         TimReferensi::where('id', $id)->update($validateData);
 
-        return redirect("/dataprovider")->with('pesan', 'data barhasil di update! silakan cek kembali');
+        return redirect("/dataprovidertim")->with('pesan', 'data barhasil di update! silakan cek kembali');
     }
 }

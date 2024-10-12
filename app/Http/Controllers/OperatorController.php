@@ -121,14 +121,8 @@ class OperatorController extends Controller
         }
         //
 
-        if (!$request->active) {
-            $validateData['active'] = false;
-        } else {
-            $validateData['active'] = true;
-        }
-
         $update_user['name'] = $validateData['name'];
-        $update_user['active'] = $validateData['active'];
+        // $update_user['active'] = $validateData['active'];
         $update_user['foto_profil'] = $validateData['foto_relawan'] ?? NULL;
 
         if (!$request->active) {
@@ -136,6 +130,8 @@ class OperatorController extends Controller
         } else {
             $update_user['active'] = true;
         }
+
+        // dd($update_user['active']);
 
         // User::where('id', $relawan->user_id)->update($update_user);
 

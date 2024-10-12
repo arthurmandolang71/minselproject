@@ -204,6 +204,56 @@ class DptCalegController extends Controller
         ]);
     }
 
+    public function create()
+    {
+
+        $kabkota = Kabkota::all();
+        $kecamatan = Kecamatan::all();
+        $kelurahan_desa = Wilayah::all();
+
+        // dd($kabupaten_kota);
+
+        return view('caleg.dpt.create', [
+            'title' => 'Tambah DPT',
+            'kabkota' => $kabkota,
+            'kecamatan' => $kecamatan,
+            'kelurahan_desa' => $kelurahan_desa,
+            'tps' => ['001', '002', '003', '004', '005', '006', '007', '008', '009', '010', '011', '012', '013', '014', '015', '016', '017', '018', '019', '020', '021', '022', '023', '024', '025', '026', '027', '028', '029', '030'],
+            'jenis_kelamin' => ['L', 'P'],
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        // dd($request);
+        $validasi = [
+            'nama' => ['required'],
+            'jenis_kelamin' => ['required'],
+            'usia' => ['required'],
+            'tps' => ['required'],
+            'alamat' => ['required'],
+        ];
+
+        $validateData = $request->validate($validasi);
+
+        $validateData['kabkota'] = $request->post('kabkota');
+        $validateData['kecamatan'] = $request->post('kecamatan');
+        $validateData['kelurahan_desa'] = $request->post('kelurahandesa');
+        $validateData['wilayah_id'] = $request->post('kelurahandesa');
+
+        $validateData['rt'] = '0';
+        $validateData['rw'] = '0';
+
+        // dd($validateData);
+
+        Dpt::create($validateData);
+
+        return redirect('/collectdata')->with('pesan', 'data barhasil di tambah silakan cari di DPT');
+    }
+
     public function getKecamatan(Request $request, $kabkota_id = 0)
     {
         $level_caleg = $request->session()->get('level_caleg');
