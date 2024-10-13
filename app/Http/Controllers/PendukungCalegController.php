@@ -517,9 +517,9 @@ class PendukungCalegController extends Controller
         $pendidikan = RefPendidikan::all();
 
         $user_id = $request->session()->get('user_id');
-        $referensi = TimReferensi::where('user_id_caleg', $user_id)->get();
-        $bantuan = KlasifikasiBantuan::where('user_id', $user_id)->get();
-        $klasifikasi = KlasifikasiPendukung::where('user_id', $user_id)->get();
+        $referensi = TimReferensi::get();
+        $bantuan = KlasifikasiBantuan::get();
+        $klasifikasi = KlasifikasiPendukung::get();
 
         // dd($user_id);
 
@@ -607,6 +607,7 @@ class PendukungCalegController extends Controller
         $pendukung['tps'] = $dpt->tps;
         $pendukung['usia'] = $dpt->usia;
         $pendukung['jenis_kelamin'] = $dpt->jenis_kelamin;
+        $pendukung['alamat'] = $dpt->alamat;
 
         $pendukung_caleg['ktp'] = $request->ktp;
         $pendukung_caleg['tempat_lahir'] = $request->tempat_lahir;
@@ -664,9 +665,9 @@ class PendukungCalegController extends Controller
         $pendidikan = RefPendidikan::all();
 
         $user_id = $request->session()->get('user_id');
-        $referensi = TimReferensi::where('user_id_caleg', $user_id)->get();
-        $bantuan = KlasifikasiBantuan::where('user_id', $user_id)->get();
-        $klasifikasi = KlasifikasiPendukung::where('user_id', $user_id)->get();
+        $referensi = TimReferensi::get();
+        $bantuan = KlasifikasiBantuan::get();
+        $klasifikasi = KlasifikasiPendukung::get();
 
         // dd($user_id);
 
