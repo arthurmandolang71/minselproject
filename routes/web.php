@@ -32,6 +32,10 @@ use App\Http\Controllers\KlasifikasiPendukungController;
 |
 */
 
+Route::get('phpmyinfo', function () {
+    phpinfo();
+})->name('phpmyinfo');
+
 // admin system
 Route::redirect('/', '/login');
 
