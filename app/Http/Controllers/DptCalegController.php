@@ -99,6 +99,9 @@ class DptCalegController extends Controller
     public function dashboard(Request $request)
     {
         //filter per dapil
+        ini_set('memory_limit', '512M');
+        ini_set('max_execution_time', 300);
+
         $level_caleg = $request->session()->get('level_caleg');
         $dapil_id = $request->session()->get('dapil_id');
         $dapil_kabkota = $request->session()->get('kabkota_dapil');
