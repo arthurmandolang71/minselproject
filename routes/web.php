@@ -35,7 +35,7 @@ use App\Http\Controllers\KlasifikasiPendukungController;
 Route::get('phpmyinfo', function () {
     phpinfo();
 })->name('phpmyinfo');
-
+// ada perubahan php munfo
 // admin system
 Route::redirect('/', '/login');
 
