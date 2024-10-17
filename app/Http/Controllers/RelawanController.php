@@ -102,7 +102,7 @@ class RelawanController extends Controller
         $validasi = [
             'tim_id' => ['required'],
             'nama' => ['required'],
-            // 'username' => ['required', 'unique:users'],
+            'nik' => ['required', 'unique:tim_referensi'],
             'no_wa' => ['required'],
             'keterangan' => ['required'],
             'target_pendukung' => [''],

@@ -46,6 +46,7 @@
                                     <thead>
                                         <tr>
                                             <th>Nama</th>
+                                            <th>NIK</th>
                                             <th>No.Wa</th>
                                             <th>Keterangan</th>
                                             <th>Pengikut</th>
@@ -67,9 +68,8 @@
                                             @endphp
                                             <tr>
 
-                                                <td>{{ $item->nama }} <br>
-                                                    {{-- <span>{{ $item->tim_ref->nama }}</span> --}}
-                                                </td>
+                                                <td>{{ $item->nama }} <br> </td>
+                                                <td>{{ $item->nik }} <br></td>
                                                 <td>{{ $item->no_wa }}</td>
                                                 <td>{{ $item->keterangan }}</td>
                                                 <td><a href="pendukungcaleg/index?referensi={{ $item->id }}"
@@ -106,11 +106,13 @@
                                     <tfoot>
                                         <tr>
                                             <th>Nama</th>
-                                            <th>username</th>
+                                            <th>NIK</th>
                                             <th>No.Wa</th>
                                             <th>Keterangan</th>
+                                            <th>Pengikut</th>
                                             <th>Target</th>
                                             <th>status</th>
+                                            <th>#</th>
                                         </tr>
                                     </tfoot>
                                 </table>
