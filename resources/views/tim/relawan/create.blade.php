@@ -94,6 +94,25 @@
                                     <div class="row ">
                                         <div class="mb-3 col-md-4">
                                             <label class="text-label form-label" for="validationCustomUsername">
+                                                NIK</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"> <i class="bi bi-whatsapp"></i>
+                                                </span>
+                                                <input name="nik" value="{{ old('nik') }}" type="text"
+                                                    class="form-control @error('nik') is-invalid @enderror"
+                                                    id="validationCustomUsername" placeholder="Masukan NIK">
+                                                @error('nik')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row ">
+                                        <div class="mb-3 col-md-4">
+                                            <label class="text-label form-label" for="validationCustomUsername">
                                                 No. Wa</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"> <i class="bi bi-whatsapp"></i>
