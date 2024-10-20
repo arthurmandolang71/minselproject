@@ -81,7 +81,7 @@
                                                                 @foreach ($item->tps as $item_sub)
                                                                     <a class="dropdown-item" href="/kta/"> TPS
                                                                         {{ $item_sub->nama }} |
-                                                                        {{ $item_sub->total_pemilih_tps }}
+                                                                        {{ $item_sub->jumlah }}
                                                                         Pemilih</a>
                                                                 @endforeach
 
