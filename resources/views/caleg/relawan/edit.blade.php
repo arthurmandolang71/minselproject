@@ -212,9 +212,9 @@
                                         <label class="text-label form-label" for="validationCustomUsername">Apakah
                                             akan menonaktifkan orang ini ?</label>
                                         <div class="form-check form-switch">
-                                            <input name="active" value="1" class="form-check-input"
+                                            <input name="is_active" value="1" class="form-check-input"
                                                 type="checkbox" id="flexSwitchCheckChecked"
-                                                @if (old('active', $relawan->active)) checked @endif>
+                                                @if (old('is_active', $relawan->is_active)) checked @endif>
                                             <label class="form-check-label" for="flexSwitchCheckChecked">jangan centang
                                                 jika
                                                 ingin mengnonaktifkan orang ini</label>

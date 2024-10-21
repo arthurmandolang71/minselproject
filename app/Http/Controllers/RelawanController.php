@@ -203,16 +203,16 @@ class RelawanController extends Controller
         //     $update_user['username'] = $validateData['username'];
         // }
 
-        if (!$request->sctive) {
-            $validateData['active'] = false;
-        } else {
-            $validateData['active'] = true;
-        }
+        // if (!$request->sctive) {
+        //     $validateData['active'] = false;
+        // } else {
+        //     $validateData['active'] = true;
+        // }
 
         // dd($validateData['active']);
 
         $update_user['name'] = $validateData['nama'];
-        $update_user['active'] = $validateData['is_active'];
+        $update_user['active'] = $request->is_active;
         $update_user['foto_profil'] = $validateData['foto_relawan'] ?? NULL;
 
         if (!$request->is_active) {
@@ -222,6 +222,7 @@ class RelawanController extends Controller
             $validateData['is_active'] = true;
             $update_user['active'] = true;
         }
+        // dd($validateData);
 
         // User::where('id', $relawan->user_id)->update($update_user);
 
