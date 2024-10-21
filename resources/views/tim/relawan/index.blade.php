@@ -47,6 +47,7 @@
                                         <tr>
                                             <th>Nama</th>
                                             <th>NIK</th>
+                                            <th>Tim</th>
                                             <th>No.Wa</th>
                                             <th>Keterangan</th>
                                             <th>Pengikut</th>
@@ -69,9 +70,11 @@
                                             <tr>
 
                                                 <td>{{ $item->nama }} <br>
+
                                                     {{-- <span>{{ $item->tim_ref->nama }}</span> --}}
                                                 </td>
                                                 <td>{{ $item->nik }} <br>
+                                                <td>{{ $item->tim_ref->nama }} <br>
                                                 <td>{{ $item->no_wa }}</td>
                                                 <td>{{ $item->keterangan }}</td>
                                                 <td><a href="" target="_blank"><span
@@ -101,6 +104,7 @@
                                         <tr>
                                             <th>Nama</th>
                                             <th>NIK</th>
+                                            <th>Tim</th>
                                             <th>No.Wa</th>
                                             <th>Keterangan</th>
                                             <th>Pengikut</th>
