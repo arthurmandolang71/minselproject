@@ -181,7 +181,9 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h2 class="text-black invoice-num">{{ $total_pemilih_turunan }}</h2>
+                                        <h2 class="text-black invoice-num">
+                                            {{ $total_pemilih_turunan }}
+                                        </h2>
                                         <span class="text-black fs-18">DPT Terdaftar</span>
                                     </div>
                                 </div>

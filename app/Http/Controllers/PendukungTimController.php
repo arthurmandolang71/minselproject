@@ -257,7 +257,7 @@ class PendukungTimController extends Controller
         $pendukung_caleg['no_hp'] = $request->no_hp;
         $pendukung_caleg['no_wa'] = $request->no_wa;
         $pendukung_caleg['status_perkawinan'] = $request->status_perkawinan;
-        $pendukung_caleg['referensi_id'] = $relawan_id;
+        $pendukung_caleg['referensi_id'] = $request->referensi_id;
         $pendukung_caleg['klasifikasi_id'] = $request->klasifikasi_id;
         $pendukung_caleg['klasifikasi_bantuan_id'] = $request->klasifikasi_bantuan_id;
         $pendukung_caleg['strtime_tanggal_lahir'] = strtotime($pendukung_caleg['tanggal_lahir']);
