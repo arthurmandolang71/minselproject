@@ -30,7 +30,7 @@ class DashboardCaleg extends Controller
         $caleg_id = $request->session()->get('caleg_id');
 
         $bantuan = KlasifikasiBantuan::where('user_id', $user_id)->get();
-        $referensi = TimReferensi::where('user_id_caleg', $user_id);
+        $referensi = TimReferensi::get();
         $klasifikasi = KlasifikasiPendukung::where('user_id', $user_id)->get();
 
         if ($level_caleg == 1) {
