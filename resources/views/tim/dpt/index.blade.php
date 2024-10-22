@@ -36,7 +36,7 @@
                             <div class="container">
                                 <form action="/timdpt" method="get">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        {{-- <div class="col-md-6">
                                             <label class="form-label" for="multicol-country">Kabupaten / kota</label>
                                             <select id="kabkota" name="kabkota" class="select2 form-select"
                                                 data-allow-clear="true">
@@ -52,8 +52,8 @@
                                                 @endforeach
                                             </select>
                                             <hr>
-                                        </div>
-                                        <div class="col-md-6">
+                                        </div> --}}
+                                        {{-- <div class="col-md-6">
                                             <label class="form-label" for="multicol-country">Kecamatan</label>
                                             <select id="kecamatan" name="kecamatan" class="select2 form-select"
                                                 data-allow-clear="true">
@@ -64,8 +64,8 @@
                                                 <option value="">Pilih</option>
                                             </select>
                                             <hr>
-                                        </div>
-                                        <div class="col-md-6">
+                                        </div> --}}
+                                        {{-- <div class="col-md-6">
                                             <label class="form-label" for="multicol-country">Kelurahan/Desa</label>
                                             <select id="kelurahandesa" name="kelurahandesa" class="select2 form-select"
                                                 data-allow-clear="true">
@@ -76,8 +76,8 @@
                                                 <option value="">Pilih</option>
                                             </select>
                                             <hr>
-                                        </div>
-                                        <div class="col-md-6">
+                                        </div> --}}
+                                        {{-- <div class="col-md-6">
                                             <label class="form-label" for="multicol-country">TPS</label>
                                             <select id="tps" name="tps" class="select2 form-select"
                                                 data-allow-clear="true">
@@ -88,7 +88,7 @@
                                                 <option value="">Pilih</option>
                                             </select>
                                             <hr>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-8">
                                             {{-- <label class="form-label" for="multicol-country">Nama</label> --}}
                                             @if ($cari_nama)
