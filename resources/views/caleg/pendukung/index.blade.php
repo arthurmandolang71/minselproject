@@ -91,20 +91,22 @@
                                         </div>
                                         <hr>
                                         <div class="col-md-4">
-                                            <label class="form-label" for="multicol-country">Referensi</label>
-                                            <select id="referensi" name="referensi" class="select2 form-select"
-                                                data-allow-clear="true">
-                                                @if ($select_referensi)
-                                                    <option value="{{ $select_referensi['id'] }}"> Pencarian
-                                                        {{ $select_referensi['nama'] }}</option>
-                                                @else
-                                                    <option value="" selected>Pilih referensi</option>
-                                                @endif
+                                            <label class="form-label" for="multicol-country">Pemeberi Data</label>
+                                            <div class="basic-form">
+                                                <select name="referensi" id="single-select2"
+                                                    class="single-select-placeholder js-states @error('referensi') is-invalid @enderror">
+                                                    @if ($select_referensi)
+                                                        <option value="{{ $select_referensi['id'] }}"> Pencarian
+                                                            {{ $select_referensi['nama'] }}</option>
+                                                    @else
+                                                        <option value="" selected>Pilih referensi</option>
+                                                    @endif
 
-                                                @foreach ($referensi_list as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                                                @endforeach
-                                            </select>
+                                                    @foreach ($referensi_list as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                             <hr>
                                         </div>
                                         <div class="col-md-4">
@@ -272,6 +274,14 @@
     <!-- Datatable -->
     <script src="{{ asset('') }}assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('') }}assets/js/plugins-init/datatables.init.js"></script>
+
+
+    <!--  vendors -->
+    {{-- <script src="{{ asset('') }}assets/vendor/global/global.min.js"></script> --}}
+    <script src="{{ asset('') }}assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+
+    <script src="{{ asset('') }}assets/vendor/select2/js/select2.full.min.js"></script>
+    <script src="{{ asset('') }}assets/js/plugins-init/select2-init.js"></script>
 @endSection
 
 
