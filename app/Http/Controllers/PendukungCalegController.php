@@ -483,7 +483,7 @@ class PendukungCalegController extends Controller
             $kabkota_list = Kabkota::get();
         }
 
-        $referensi_list = TimReferensi::where('user_id_caleg', $user_id)->get();
+        $referensi_list = TimReferensi::get();
         $bantuan_list = KlasifikasiBantuan::where('user_id', $user_id)->get();
         $klasifikasi_list = KlasifikasiPendukung::where('user_id', $user_id)->get();
 

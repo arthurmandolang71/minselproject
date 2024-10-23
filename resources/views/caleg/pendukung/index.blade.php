@@ -176,7 +176,7 @@
                                             <th>Kel./Desa</th>
                                             <th>Klasifikasi</th>
                                             <th>Program</th>
-                                            <th>Referensi</th>
+                                            <th>Pemberi Data</th>
                                             <th>No.Wa/No.Hp</th>
                                             <th>Tps</th>
                                             <th>#</th>
@@ -240,7 +240,7 @@
                                             <th>Kel./Desa</th>
                                             <th>Klasifikasi</th>
                                             <th>Program</th>
-                                            <th>Referensi</th>
+                                            <th>Pemberi Data</th>
                                             <th>No.Wa/No.Hp</th>
                                             <th>Tps</th>
                                             <th>#</th>
