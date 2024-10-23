@@ -82,13 +82,13 @@ class RelawantimController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $relawan = TimReferensi::where('id', $id)->with(['user_ref'])->first();
-
-        $user_id = $request->session()->get('user_id');
+        $relawan = TimReferensi::where('id', $id)->first();
+        // dd('test');
+        // $user_id = $request->session()->get('user_id');
         $tim = Tim::get();
 
         return view('tim.relawan.edit', [
-            'title' => 'Ubah Data Relawan',
+            'title' => 'Ubah Pemberi Data',
             'relawan' => $relawan,
             'tim' =>  $tim
         ]);
@@ -106,12 +106,12 @@ class RelawantimController extends Controller
             'nik' => ['required', 'unique:tim_referensi'],
             'no_wa' => ['required'],
             'keterangan' => ['required'],
-            'target_pendukung' => [''],
+            'target_pendukung' => ['required'],
         ];
 
-        if ($request->file('foto_relawan')) {
-            $validasi['foto_profil'] = ['image', 'file', 'mimes:jpeg,png,jpg', 'max:5024'];
-        }
+        // if ($request->file('foto_relawan')) {
+        //     $validasi['foto_profil'] = ['image', 'file', 'mimes:jpeg,png,jpg', 'max:5024'];
+        // }
 
         $validateData = $request->validate($validasi);
 
@@ -124,12 +124,12 @@ class RelawantimController extends Controller
             $input_user['caleg_level'] = 3;
         }
 
-        if ($request->file('foto_relawan')) {
-            $file = $request->file('foto_relawan');
-            $path = Storage::put('foto_relawan', $file);
-            Storage::setVisibility($path, 'public');
-            $validateData['foto_relawan'] = Storage::url($path);
-        }
+        // if ($request->file('foto_relawan')) {
+        //     $file = $request->file('foto_relawan');
+        //     $path = Storage::put('foto_relawan', $file);
+        //     Storage::setVisibility($path, 'public');
+        //     $validateData['foto_relawan'] = Storage::url($path);
+        // }
 
         $user_id_caleg = $request->session()->get('user_id');
         $caleg_id = $request->session()->get('caleg_id');
@@ -137,7 +137,7 @@ class RelawantimController extends Controller
         $validateData['celeg_id'] = $caleg_id;
         $validateData['is_active'] = 1;
 
-        $validateData['password'] = Hash::make($request->password);
+        // $validateData['password'] = Hash::make($request->password);
 
         // $input_user['name'] = $validateData['nama'];
         // $input_user['username'] = $validateData['username'];
@@ -172,10 +172,10 @@ class RelawantimController extends Controller
 
         $validasi = [
             'tim_id' => ['required'],
-            'nama' => ['required'],
-            'no_wa' => ['required'],
-            'keterangan' => ['required'],
-            'target_pendukung' => [''],
+            // 'nama' => ['required'],
+            // 'no_wa' => ['required'],
+            // 'keterangan' => ['required'],
+            'target_pendukung' => ['required'],
         ];
 
         // if ($request->username != $user->username) {
@@ -204,25 +204,25 @@ class RelawantimController extends Controller
         //     $update_user['username'] = $validateData['username'];
         // }
 
-        if (!$request->sctive) {
-            $validateData['active'] = false;
-        } else {
-            $validateData['active'] = true;
-        }
+        // if (!$request->sctive) {
+        //     $validateData['active'] = false;
+        // } else {
+        //     $validateData['active'] = true;
+        // }
 
         // dd($validateData['active']);
 
-        $update_user['name'] = $validateData['nama'];
-        $update_user['active'] = $validateData['is_active'];
-        $update_user['foto_profil'] = $validateData['foto_relawan'] ?? NULL;
+        // $update_user['name'] = $validateData['nama'];
+        // $update_user['active'] = $validateData['is_active'];
+        // $update_user['foto_profil'] = $validateData['foto_relawan'] ?? NULL;
 
-        if (!$request->is_active) {
-            $validateData['is_active'] = false;
-            $update_user['active'] = false;
-        } else {
-            $validateData['is_active'] = true;
-            $update_user['active'] = true;
-        }
+        // if (!$request->is_active) {
+        //     $validateData['is_active'] = false;
+        //     $update_user['active'] = false;
+        // } else {
+        //     $validateData['is_active'] = true;
+        //     $update_user['active'] = true;
+        // }
 
         // User::where('id', $relawan->user_id)->update($update_user);
 

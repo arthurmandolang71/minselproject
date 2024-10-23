@@ -53,7 +53,7 @@
                                             <th>Pengikut</th>
                                             <th>Target</th>
                                             <th>status</th>
-                                            {{-- <th>#</th> --}}
+                                            <th>#</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -95,6 +95,10 @@
                                                     @endif
                                                 </td>
                                                 <td>
+                                                    <a href="/dataprovidertim/{{ $item->id }}/edit"
+                                                        class="btn btn-rounded btn-primary"><span
+                                                            class="btn-icon-start text-primary"><i class="fa fa-edit"></i>
+                                                        </span></a>
 
                                                 </td>
                                             </tr>
@@ -110,6 +114,7 @@
                                             <th>Pengikut</th>
                                             <th>Target</th>
                                             <th>status</th>
+                                            <th>#</th>
                                         </tr>
                                     </tfoot>
                                 </table>

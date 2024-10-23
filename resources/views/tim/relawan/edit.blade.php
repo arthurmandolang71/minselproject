@@ -16,8 +16,8 @@
         <div class="container-fluid">
             <div class="row page-titles">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="/dataprovider">Relawan</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Tambah Relawan</a></li>
+                    <li class="breadcrumb-item active"><a href="/dataprovider">Pemberi Data</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Edit Pemberi Data</a></li>
                 </ol>
             </div>
             <!-- row -->
@@ -28,7 +28,7 @@
                         <!--********************************** content start ***********************************-->
                         <div class="row container">
                             <div class="col-12">
-                                <a href="/dataprovider" class="btn btn-block btn-primary"><span
+                                <a href="/dataprovidertim" class="btn btn-block btn-primary"><span
                                         class="btn-icon-start text-primary"><i class="bi bi-backspace-fill"></i>
                                     </span>Kembali</a>
                             </div>
@@ -84,7 +84,8 @@
                                             <span class="input-group-text"> <i class="bi bi-card-heading"></i> </span>
                                             <input name="nama" value="{{ old('nama', $relawan->nama) }}" type="text"
                                                 class="form-control @error('nama') is-invalid @enderror"
-                                                id="validationCustomUsername" placeholder="Masukan Nama Lengkap relawan">
+                                                id="validationCustomUsername" placeholder="Masukan Nama Lengkap relawan"
+                                                disabled>
                                             @error('nama')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -102,7 +103,8 @@
                                                 </span>
                                                 <input name="no_wa" value="{{ old('no_wa', $relawan->no_wa) }}"
                                                     type="text" class="form-control @error('no_wa') is-invalid @enderror"
-                                                    id="validationCustomUsername" placeholder="Masukan No.Wa Aktif">
+                                                    id="validationCustomUsername" placeholder="Masukan No.Wa Aktif"
+                                                    disabled>
                                                 @error('no_wa')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -121,7 +123,7 @@
                                                 type="text"
                                                 class="form-control @error('keterangan') is-invalid @enderror"
                                                 id="validationCustomUsername"
-                                                placeholder="Masukan keterangan mengenai relawan ini">
+                                                placeholder="Masukan keterangan mengenai relawan ini" disabled>
                                             @error('keterangan')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -185,7 +187,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row ">
+                                    {{-- <div class="row ">
                                         <div class="mb-3 col-md-6">
                                             <label class="text-label form-label" for="validationCustomUsername">Foto
                                                 Orang </label>
@@ -206,9 +208,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="mb-3 col-md-6">
+                                    {{-- <div class="mb-3 col-md-6">
                                         <label class="text-label form-label" for="validationCustomUsername">Apakah
                                             akan menonaktifkan orang ini ?</label>
                                         <div class="form-check form-switch">
@@ -219,7 +221,7 @@
                                                 jika
                                                 ingin mengnonaktifkan orang ini</label>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
 
                                     <div class="mb-3 col-md-6">
@@ -273,7 +275,7 @@
     <script src="{{ asset('') }}assets/vendor/select2/js/select2.full.min.js"></script>
     <script src="{{ asset('') }}assets/js/plugins-init/select2-init.js"></script>
 
-    <script>
+    {{-- <script>
         function priviewImage1() {
             const image = document.querySelector('#image1');
             const view = document.querySelector('.img-preview1');
@@ -287,7 +289,7 @@
                 view.src = oFREvent.target.result;
             }
         }
-    </script>
+    </script> --}}
 @endSection
 
 <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js"
