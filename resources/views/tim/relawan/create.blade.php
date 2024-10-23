@@ -185,7 +185,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"> <i class="bi bi-instagram"></i>
                                                 </span>
-                                                <input name="target_pendukung" value="{{ old('target_pendukung') }}"
+                                                <input name="target_pendukung" value="{{ old('target_pendukung', 20) }}"
                                                     type="text"
                                                     class="form-control @error('target_pendukung') is-invalid @enderror"
                                                     id="validationCustomtarget_pendukung">
