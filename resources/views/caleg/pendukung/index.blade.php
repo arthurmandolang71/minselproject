@@ -91,7 +91,7 @@
                                         </div>
                                         <hr>
                                         <div class="col-md-4">
-                                            <label class="form-label" for="multicol-country">Pemeberi Data</label>
+                                            <label class="form-label" for="multicol-country">Pemberi Data</label>
                                             <div class="basic-form">
                                                 <select name="referensi" id="single-select2"
                                                     class="single-select-placeholder js-states @error('referensi') is-invalid @enderror">
@@ -99,7 +99,7 @@
                                                         <option value="{{ $select_referensi['id'] }}"> Pencarian
                                                             {{ $select_referensi['nama'] }}</option>
                                                     @else
-                                                        <option value="" selected>Pilih referensi</option>
+                                                        <option value="" selected>Pilih Pemberi Data</option>
                                                     @endif
 
                                                     @foreach ($referensi_list as $item)

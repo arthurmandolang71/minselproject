@@ -98,7 +98,7 @@
                         <th>No.WA/HP</th>
                         <th>Alamat</th>
                         <th>kelurahan</th>
-                        <th>Referensi</th>
+                        <th>Pemberi Data</th>
                         <th>TPS</th>
                     </tr>
                 </thead>
@@ -112,7 +112,7 @@
                             <td>{{ $item->pendukung_ref->usia }} <br>
                             <td>
                                 <p>{{ $item->no_wa }} / {{ $item->no_hp }}<br>
-                            <td>{{ $item->alamat_detail }} <br>
+                            <td>{{ $item->alamat }} <br>
                             <td>{{ $item->pendukung_ref->kelurahandesa_ref->nama }}</td>
                             <td>{{ $item->relawan_ref->nama ?? null }} <br>
                             <td><strong>{{ $item->pendukung_ref->tps }}</strong></td>
@@ -125,7 +125,8 @@
         <div class="row">
             <div class="col-12">
                 <span class="fw-bold">Note:</span>
-                <span>Data ini di cetak berdasarkan tanggal cetak! data bisa saja terjadi perubahan</span>
+                <span>Data ini di cetak berdasarkan tanggal <b>{{ date('Y-d-m') }} </b>! data bisa saja terjadi
+                    perubahan</span>
             </div>
         </div>
     </div>
