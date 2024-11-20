@@ -22,7 +22,7 @@ class RelawantimController extends Controller
     public function index(Request $request)
     {
         $user_id = $request->session()->get('user_id');
-        $relawan = TimReferensi::with(['tim_ref', 'user_ref', 'pengikut_ref'])->get();
+        $relawan = TimReferensi::with(['tim_ref', 'user_ref', 'pengikut_ref'])->cursorPaginate(20)->withQueryString();
 
         // dd($relawan);
 

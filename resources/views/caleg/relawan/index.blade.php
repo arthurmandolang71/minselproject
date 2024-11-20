@@ -42,7 +42,8 @@
                             <br>
 
                             <div class="table-responsive">
-                                <table id="example" class="display" style="width:100%">
+                                {{-- <table id="example" class="display" style="width:100%"> --}}
+                                <table class="display" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Nama</th>
@@ -116,6 +117,9 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                            </div>
+                            <div class="container">
+                                {{ $relawan->links() }}
                             </div>
 
 

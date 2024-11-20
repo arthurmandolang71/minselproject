@@ -120,6 +120,10 @@
                                 </table>
                             </div>
 
+                            <div class="container">
+                                {{ $relawan->links() }}
+                            </div>
+
 
 
                         </div>
