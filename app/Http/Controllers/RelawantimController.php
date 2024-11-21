@@ -22,13 +22,22 @@ class RelawantimController extends Controller
     public function index(Request $request)
     {
         $user_id = $request->session()->get('user_id');
-        $relawan = TimReferensi::with(['tim_ref', 'user_ref', 'pengikut_ref'])->orderBy("updated_at", 'desc')->cursorPaginate(20)->withQueryString();
+        $relawan = TimReferensi::with(['tim_ref', 'user_ref', 'pengikut_ref'])->orderBy("updated_at", 'desc');
 
+        if (request('nama')) {
+            $nama = request('nama');
+            $relawan->where('nama', 'like', "%$nama%");
+            $cari_nama = request('nama');
+            // dd($nama);
+        } else {
+            $cari_nama = null;
+        }
         // dd($relawan);
 
         return view('tim.relawan.index', [
             'title' => 'Pemberi Data',
-            'relawan' => $relawan,
+            'cari_nama' => $cari_nama,
+            'relawan' => $relawan->cursorPaginate(20)->withQueryString(),
         ]);
     }
 

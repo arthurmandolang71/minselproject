@@ -40,6 +40,29 @@
                                     </span>Tambah Orang</a>
                             </div>
                             <br>
+                            <form action="/dataprovidertim" method="get">
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        {{-- <label class="form-label" for="multicol-country">Nama</label> --}}
+                                        @if ($cari_nama)
+                                            <input type="text" name="nama" id="nama" class="form-control"
+                                                placeholder="John" value="{{ $cari_nama }}" />
+                                        @else
+                                            <input type="text" name="nama" id="nama" class="form-control"
+                                                placeholder="Masukan pencarian nama/marga" value="" />
+                                        @endif
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" href="/dpt/create" class="btn btn-block btn-primary"><span
+                                                class="btn-icon-start text-primary"><i class="fa fa-search"></i>
+                                            </span>Cari!</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
 
                             <div class="table-responsive">
                                 {{-- <table id="example" class="display" style="width:100%"> --}}
