@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CalegKabkota;
-use App\Models\CalegPendukungKabkota;
-use App\Models\CalegPendukungProv;
-use App\Models\CalegPendukungRi;
-use App\Models\CalegProv;
+use App\Models\Tim;
 use App\Models\CalegRi;
-use App\Models\DapilKabkota;
-use App\Models\DapilProv;
 use App\Models\DapilRi;
-use App\Models\KlasifikasiBantuan;
-use App\Models\KlasifikasiPendukung;
+use App\Models\CalegProv;
+use App\Models\DapilProv;
+use App\Models\CalegKabkota;
+use App\Models\DapilKabkota;
 use App\Models\TimReferensi;
 use Illuminate\Http\Request;
+use App\Models\CalegPendukungRi;
+use App\Models\CalegPendukungProv;
+use App\Models\KlasifikasiBantuan;
 use Illuminate\Routing\Controller;
+use App\Models\KlasifikasiPendukung;
+use App\Models\CalegPendukungKabkota;
 
 
 class DashboardCaleg extends Controller
@@ -100,13 +101,30 @@ class DashboardCaleg extends Controller
             ]);
         }
 
-        // dd($list_klasifikasi);
+        $list_tim = [];
+        $tim = Tim::get();
+        foreach ($tim as $item) {
+            // $hitung_pendukung = CalegPendukungProv::where('klasifikasi_id', $item->id)->count();
+            $hitung_pendukun =  CalegPendukungProv::whereHas('relawan_ref', function ($q) use ($item) {
+                $q->where('tim_id', $item->id);
+            })->count();
+
+            array_push($list_tim, [
+                'nama'    =>    $item->nama,
+                'jumlah'    =>   $hitung_pendukun ?? null,
+            ]);
+        }
+
+
+
+        // dd($list_tim);
 
         return view('caleg.dashboard.index', [
             'title' => 'Dashboard',
             'total_pendukung' => $total_pendukung,
             'total_relawan' => $referensi->count(),
             'list_klasifikasi' => $list_klasifikasi,
+            'list_tim' => $list_tim,
             // 'list_referensi' => $list_referensi,
             'list_bantuan' => $list_bantuan,
             'dapil' => $dapil,

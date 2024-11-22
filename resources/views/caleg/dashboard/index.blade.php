@@ -108,7 +108,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="card">
                                             @if ($list_bantuan)
                                                 @foreach ($list_bantuan as $item)
@@ -125,6 +125,23 @@
                                             @endif
                                         </div>
 
+                                    </div> --}}
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            @if ($list_tim)
+                                                @foreach ($list_tim as $item)
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Pendukung dari
+                                                            <b>{{ $item['nama'] }}</b>
+                                                        </h4>
+                                                        <div class="d-flex align-items-center">
+
+                                                            <h2 class="fs-38">{{ $item['jumlah'] }} </h2>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
                                     </div>
 
                                 </div>
