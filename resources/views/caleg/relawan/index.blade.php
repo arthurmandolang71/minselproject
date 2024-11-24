@@ -33,6 +33,7 @@
 
 
 
+
                         <!--********************************** content start ***********************************-->
 
                         <div class="card-body">
@@ -42,6 +43,51 @@
                                     </span>Tambah Orang</a>
                             </div>
                             <br>
+
+                            <form action="/dataprovider" method="get">
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        {{-- <label class="form-label" for="multicol-country">Nama</label> --}}
+                                        @if ($cari_nama)
+                                            <input type="text" name="nama" id="nama" class="form-control"
+                                                placeholder="John" value="{{ $cari_nama }}" />
+                                        @else
+                                            <input type="text" name="nama" id="nama" class="form-control"
+                                                placeholder="Masukan pencarian nama/marga" value="" />
+                                        @endif
+                                        {{-- <hr> --}}
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        {{-- <label class="form-label" for="multicol-country">Pilih Tim</label> --}}
+                                        <select id="tim" name="tim" class="select2 form-select"
+                                            data-allow-clear="true">
+                                            @if ($select_tim)
+                                                <option value="{{ $select_tim['id'] }}"> Pencarian
+                                                    {{ $select_tim['nama'] }}</option>
+                                            @else
+                                                <option value="" selected>Pilih Tim</option>
+                                            @endif
+
+                                            @foreach ($tim_list as $item)
+                                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                        {{-- <hr> --}}
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <button type="submit" href="/dpt/create" class="btn btn-block btn-primary"><span
+                                                class="btn-icon-start text-primary"><i class="fa fa-search"></i>
+                                            </span>Filter!</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                            <hr>
+
 
                             <div class="table-responsive">
                                 {{-- <table id="example" class="display" style="width:100%"> --}}

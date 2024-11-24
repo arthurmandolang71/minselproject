@@ -21,13 +21,44 @@ class RelawanController extends Controller
     public function index(Request $request)
     {
         $user_id = $request->session()->get('user_id');
-        $relawan = TimReferensi::with(['tim_ref', 'user_ref', 'pengikut_ref'])->cursorPaginate(20)->withQueryString();
+        $relawan = TimReferensi::with(['tim_ref', 'user_ref', 'pengikut_ref']);
 
         // dd($relawan);
 
+        if (request('nama')) {
+            $nama = request('nama');
+            $relawan->where('nama', 'like', "%$nama%");
+            $cari_nama = request('nama');
+            // dd($nama);
+        } else {
+            $cari_nama = null;
+        }
+
+        if (request('tim') != '') {
+            $get_tim = Tim::firstWhere('id', request('tim'));
+            $select_tim = [
+                'id' => $get_tim->id,
+                'nama' => $get_tim->nama,
+            ];
+            $relawan->where('tim_id', request('tim'));
+        } else {
+            $select_tim = NULL;
+        }
+
+        // if (request('tim') != '') {
+        //     $relawan->cursorPaginate(1000)->withQueryString();
+        // } else {
+        //     $relawan->cursorPaginate(100)->withQueryString();
+        // }
+
+        $tim_list = Tim::get();
+
         return view('caleg.relawan.index', [
             'title' => 'Relawan',
-            'relawan' => $relawan,
+            'cari_nama' =>  $cari_nama,
+            'select_tim' =>  $select_tim,
+            'tim_list' => $tim_list,
+            'relawan' => $relawan->cursorPaginate(100)->withQueryString(),
         ]);
     }
 
