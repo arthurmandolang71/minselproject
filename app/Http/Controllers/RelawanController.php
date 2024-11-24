@@ -58,7 +58,7 @@ class RelawanController extends Controller
             'cari_nama' =>  $cari_nama,
             'select_tim' =>  $select_tim,
             'tim_list' => $tim_list,
-            'relawan' => $relawan->cursorPaginate(1000)->withQueryString(),
+            'relawan' => $relawan->cursorPaginate(300)->withQueryString(),
         ]);
     }
 
